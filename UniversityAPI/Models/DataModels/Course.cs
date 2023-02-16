@@ -4,22 +4,29 @@ namespace UniversityAPI.Models.DataModels
 {
     public class Course: BaseEntity
     {
-        [MaxLength(50)]
-        public string? Name { get; set; }
-        [MaxLength(280)]
+        [Required, StringLength(50)]
+        public string Name { get; set; } = string.Empty;
+        [Required, StringLength(280)]
         public string DescriptionSmall { get; set; } = string.Empty;
-        public string DescriptionLarge { get; set; } = string.Empty;
+        [Required]
+        public string Description { get; set; } = string.Empty;
         public string Audience { get; set; } = string.Empty;
         public string Objectives { get; set; } = string.Empty;
         public string Requirements { get; set; } = string.Empty;
-        public Level Level { get; set; }
+        public Level Level { get; set; } = Level.Basic;
+
+        [Required]
+        public ICollection<Category> Categories { get; set; } = new List<Category>();
+        public Chapter Chapter { get; set; } = new Chapter();
+        [Required]
+        public ICollection<Student> Students { get; set; } = new List<Student>();
     }
 
     public enum Level
     {
-        None,
         Basic,
-        Intermediate,
-        Advanced
+        Medium,
+        Advanced,
+        Expert
     }
 }

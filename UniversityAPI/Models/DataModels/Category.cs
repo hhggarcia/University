@@ -6,6 +6,6 @@ namespace UniversityAPI.Models.DataModels
     {
         [Required]
         public string Name { get; set; } = string.Empty;
-        public ICollection<Category> Categories { get; set;} = new List<Category>();
+        public ICollection<Course> Courses { get; set;} = new List<Course>();
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UniversityAPI.DataAccess;
 
@@ -11,9 +12,11 @@ using UniversityAPI.DataAccess;
 namespace UniversityAPI.Migrations
 {
     [DbContext(typeof(UniversityDBContext))]
-    partial class UniversityDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230217205227_again")]
+    partial class again
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -215,8 +218,16 @@ namespace UniversityAPI.Migrations
                     b.Property<DateTime>("Dob")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdateAt")
                         .HasColumnType("datetime2");
@@ -225,13 +236,7 @@ namespace UniversityAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
 
                     b.ToTable("Students");
                 });
@@ -332,26 +337,9 @@ namespace UniversityAPI.Migrations
                     b.Navigation("Course");
                 });
 
-            modelBuilder.Entity("UniversityAPI.Models.DataModels.Student", b =>
-                {
-                    b.HasOne("UniversityAPI.Models.DataModels.User", "User")
-                        .WithOne("Student")
-                        .HasForeignKey("UniversityAPI.Models.DataModels.Student", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("UniversityAPI.Models.DataModels.Course", b =>
                 {
                     b.Navigation("Chapter")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("UniversityAPI.Models.DataModels.User", b =>
-                {
-                    b.Navigation("Student")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

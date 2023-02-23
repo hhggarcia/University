@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityAPI", "UniversityAPI\UniversityAPI.csproj", "{BBF3D13C-EEA3-4F5E-B513-57595F69197B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversityAPI", "UniversityAPI\UniversityAPI.csproj", "{BBF3D13C-EEA3-4F5E-B513-57595F69197B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqSnnippers", "LinqSnnippers\LinqSnnippers.csproj", "{29DA2840-86E2-491D-9709-FA6499AF60F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{BBF3D13C-EEA3-4F5E-B513-57595F69197B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBF3D13C-EEA3-4F5E-B513-57595F69197B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBF3D13C-EEA3-4F5E-B513-57595F69197B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29DA2840-86E2-491D-9709-FA6499AF60F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29DA2840-86E2-491D-9709-FA6499AF60F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29DA2840-86E2-491D-9709-FA6499AF60F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29DA2840-86E2-491D-9709-FA6499AF60F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

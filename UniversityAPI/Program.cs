@@ -1,6 +1,7 @@
 // 1. using to work EntityFramework
 using Microsoft.EntityFrameworkCore;
 using UniversityAPI.DataAccess;
+using UniversityAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,9 @@ builder.Services.AddDbContext<UniversityDBContext>(options => options.UseSqlServ
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+AddTransient();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -35,3 +39,9 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+void AddTransient()
+{
+    builder.Services.AddTransient<IServices, Services>();
+
+}

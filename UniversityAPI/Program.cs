@@ -18,7 +18,7 @@ builder.Services.AddDbContext<UniversityDBContext>(options => options.UseSqlServ
 builder.Services.AddControllers();
 
 // 4 add services Scope, Transient, Single
-AddTransient();
+AddScoped();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -57,8 +57,12 @@ app.UseCors("CorsPolicy");
 
 app.Run();
 
-void AddTransient()
+void AddScoped()
 {
-    builder.Services.AddTransient<IServices, Services>();
+    builder.Services.AddScoped<IServices, Services>();
+    builder.Services.AddScoped<IStudentServices, StudentServices>();
+    builder.Services.AddScoped<ICourseServices, CourseServices>();
+    builder.Services.AddScoped<IChapterServices, ChapterServices>();
+    builder.Services.AddScoped<ICategoryServices, CategoryServices>();
 
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UniversityAPI.DataAccess;
 using UniversityAPI.Models.DataModels;
+using UniversityAPI.Services;
 
 namespace UniversityAPI.Controllers
 {
@@ -14,10 +15,13 @@ namespace UniversityAPI.Controllers
     [ApiController]
     public class CoursesController : ControllerBase
     {
+        private readonly ICourseServices _courseService;
         private readonly UniversityDBContext _context;
 
-        public CoursesController(UniversityDBContext context)
+        public CoursesController(ICourseServices courseService,
+            UniversityDBContext context)
         {
+            _courseService = courseService;
             _context = context;
         }
 
@@ -116,6 +120,23 @@ namespace UniversityAPI.Controllers
             return NoContent();
         }
 
+        [HttpGet("NoChapters")]
+        public async Task<ActionResult<IEnumerable<Course>>> GetCourseNoChapter()
+        {
+            if (_context.Courses == null)
+            {
+                return NotFound();
+            }
+
+            var courses = await _courseService.GetCourseNoChapter();
+
+            if (courses == null)
+            {
+                return NotFound();
+            }
+
+            return courses.ToList();
+        }
         private bool CourseExists(int id)
         {
             return (_context.Courses?.Any(e => e.Id == id)).GetValueOrDefault();
